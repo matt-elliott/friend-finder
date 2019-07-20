@@ -3,8 +3,13 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const port = process.env.port || 3000;
-require('./app/routing/apiRoutes');
-require('./app/routing/htmlRoutes');
+const bodyparser = require('body-parser');
+const apiRoutes = require('./app/routing/apiRoutes');
+global.appDir = path.dirname(require.main.filename) + '/app';
+require('./app/routing/htmlRoutes')(app, bodyparser);
+require('./app/routing/apiRoutes')(app, bodyparser);
+
+app.use('/assets', express.static(`./app/public`));
 
 function portListener() {
   console.log(`Listening on port: ${port}`);
