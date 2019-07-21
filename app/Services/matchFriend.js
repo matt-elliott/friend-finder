@@ -1,9 +1,6 @@
 module.exports = function(pathToSiteData, newData) {
   const siteData = require(pathToSiteData);
   let totalledScores = [];
-  let highScore;
-  let matchIndex;
-  let matchedFriend;
 
   //loop through siteData and compare each friend's score with new user's score
   siteData.forEach(function(item, index) {
@@ -23,12 +20,11 @@ module.exports = function(pathToSiteData, newData) {
   });
 
   //now we determine what the highest score was
-  highScore = Math.max(...totalledScores);
+  let minScore = Math.min(...totalledScores);
   
   //now we find the index of the high score in totalledScores and that is our matched friend
-  
-  matchIndex = totalledScores.indexOf(highScore);
-  matchedFriend = siteData[matchIndex];
+  let matchIndex = totalledScores.indexOf(minScore);
+  let matchedFriend = siteData[matchIndex];
 
   return matchedFriend;
 }
