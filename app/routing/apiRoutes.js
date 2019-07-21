@@ -1,6 +1,7 @@
 module.exports = function (app){
   const bodyParser = require('body-parser');
   const fs = require('fs');
+  const matchFriend = require(`${global.appDir}/Services/matchFriend`);
 
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
@@ -78,15 +79,17 @@ module.exports = function (app){
     }
     
     newData.push(sanitizedData);
-
-    fs.writeFile(
-      file,
-      JSON.stringify(newData),
-      'utf8',
-      function(error) {``
-      if(error) throw error;
-      console.log('Updated Friends.js')
-      res.end();
-    });
+    matchFriend(file, sanitizedData);
+    // fs.writeFile(
+    //   file,
+    //   JSON.stringify(newData),
+    //   'utf8',
+    //   function(error) {
+    //     if(error) throw error;
+    //     console.log('Updated Friends.js');
+    //     // matchFriend(file, name);
+    //     res.end();
+    //   }
+    // );
   });
 }

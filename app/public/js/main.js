@@ -11,6 +11,6 @@ $('#survey-form').submit(function(event) {
       console.log(status);
   },
   "json");
-
-  $(this).trigger('reset');
+  //TODO VVVV UNCOMMENT THIS VVVV
+  // $(this).trigger('reset');
 });
