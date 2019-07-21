@@ -16,7 +16,7 @@ module.exports = function (app){
       }
     );
   });
-  
+
   app.get('/api/friends/:name', function(req, res) {
     let friendName = req.params.name;
     
@@ -55,7 +55,28 @@ module.exports = function (app){
       console.log(error);
     }
 
-    newData.push(req.body);
+    let {name, photo, question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12} = req.body;
+
+    let sanitizedData = {
+      "name": name,
+      "photo": photo,
+      "scores": [
+        question1,
+        question2,
+        question3,
+        question4,
+        question5,
+        question6,
+        question7,
+        question8,
+        question9,
+        question10,
+        question11,
+        question12
+      ]
+    }
+    
+    newData.push(sanitizedData);
 
     fs.writeFile(
       file,
