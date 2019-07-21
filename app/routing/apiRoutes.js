@@ -16,9 +16,31 @@ module.exports = function (app){
       }
     );
   });
-  app.get('/api/friends/:friend', function(req, res) {
-    res.send('SPECFIC FWEND!')
+  
+  app.get('/api/friends/:name', function(req, res) {
+    let friendName = req.params.name;
+    
+    fs.readFile(
+      `${global.appDir}/data/friends.json`,
+      'utf8',
+      function(error, data) {
+        if(error) throw error;
+        let results = JSON.parse(data);
+        let match;
+
+        results.forEach(function(r) {
+          if(r.name === friendName) {
+            console.log(r);
+            match = r;
+          }
+        });
+
+        res.send(match);
+        res.end();
+      }
+    );
   });
+
   app.post('/api/addFriend',
   function(req, res) {
     let file = `${global.appDir}/data/friends.json`;
@@ -34,7 +56,6 @@ module.exports = function (app){
     }
 
     newData.push(req.body);
-    console.log(newData);
 
     fs.writeFile(
       file,
