@@ -45,7 +45,7 @@ module.exports = function (app){
   function(req, res) {
     let file = `${global.appDir}/data/friends.json`;
     let newData = [];
-
+    //TODO move the data building and sanatizing into a service
     try {
       let fileData = require(file);
       fileData.forEach(function(data) {
@@ -57,6 +57,7 @@ module.exports = function (app){
 
     let {name, photo, question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12} = req.body;
 
+    
     let sanitizedData = {
       "name": name,
       "photo": photo,
