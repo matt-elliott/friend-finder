@@ -4,13 +4,15 @@ $('#survey-form').submit(function(event) {
   
   let formData = $(this).serializeArray();
   
-  $.post(
-    '/api/addFriend',
-    formData,
-    function(data, status, xhr) {
-      console.log(status);
-  },
-  "json");
-  //TODO VVVV UNCOMMENT THIS VVVV
-  // $(this).trigger('reset');
+  $.post('/api/addFriend', formData, 'json')
+    .done(function(data) {
+      $('body').prepend(data);
+      setTimeout(function() {
+        $('#matchPopUp').css('display','block');
+        $('#matchPopUp').addClass('show');
+      }, 500);
+  });
+  
+  $(this).trigger('reset');
 });
+

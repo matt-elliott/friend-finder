@@ -11,7 +11,7 @@ module.exports = function(matchedFriend) {
       <div class="modal-body">
         <h5>${matchedFriend.name}</h5>
         <figure>
-          <img src="${matchedFriend.img}" alt="default-guy">
+          <img src="${matchedFriend.photo}" alt="Picture of ${matchedFriend.name}">
         </figure>
       </div>
       <div class="modal-footer">
