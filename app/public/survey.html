@@ -5,7 +5,7 @@
   <meta name="viewport" content=" width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <title>Document</title>
+  <title>Psycho Finder | The Survey</title>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/styles.css"></head>
@@ -18,7 +18,8 @@
 
     <section class="container">
       <div class="row">
-        <form method="POST" class="col-xs">
+        <form method="POST"
+          target="_blank" enctype="application/x-www-form-urlencoded" class="col-xs" id="survey-form">
           <div class="form-group header">
             <label for="name">Name (required)</label>
             <input name="name" type="text" class="form-control" required>
@@ -185,13 +186,10 @@
               <input type="submit" class="btn btn-primary"></input>
               <input type="reset" class="btn btn-warning"></input>
           </div>
-          
-        </form>
+        <!-- </form> -->
       </div>
     </section>
-    
-
-
-
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/assets/js/main.js"></script>
   </body>
 </html>

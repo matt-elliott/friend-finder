@@ -2,12 +2,15 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const path = require('path');
+
+global.appDir = path.dirname(require.main.filename) + '/app';
+
 const port = process.env.port || 3000;
 const bodyparser = require('body-parser');
 const apiRoutes = require('./app/routing/apiRoutes');
-global.appDir = path.dirname(require.main.filename) + '/app';
-require('./app/routing/htmlRoutes')(app, bodyparser);
-require('./app/routing/apiRoutes')(app, bodyparser);
+
+require('./app/routing/htmlRoutes')(app);
+require('./app/routing/apiRoutes')(app);
 
 app.use('/assets', express.static(`./app/public`));
 
