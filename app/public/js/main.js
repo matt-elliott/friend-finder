@@ -16,3 +16,8 @@ $('#survey-form').submit(function(event) {
   $(this).trigger('reset');
 });
 
+//listen for modal close click
+$(document).on('click', '#matchPopUp .close', function() {
+  $('#matchPopUp').fadeOut('slow');
+  $('#matchPopUp').remove();
+})
